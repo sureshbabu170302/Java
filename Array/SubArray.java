@@ -20,6 +20,7 @@ public class SubArray
         maxArray(arr);
         minArray(arr);
         maxSubArray(arr);
+        minSubArray(arr);
     }   
 
     public static  void displayArray(int[] arr)
@@ -91,9 +92,30 @@ public class SubArray
                     }
                     System.out.print(arr[i] + " ");
                 }
+                System.out.println();
                 System.out.println("Maximum in subarray: " + max);
             }
         }
     }
-    
+
+    public static void minSubArray(int[]arr)
+    {
+        for(int si = 0 ; si < arr.length ; si++)
+        {
+            for(int ei = si ; ei < arr.length ; ei++)
+            {
+                int min = arr[si];
+                for(int i = si ; i <= ei ; i++)
+                {
+                    if(min>arr[i])
+                    {
+                        min=arr[i];
+                    }
+                    System.out.print(arr[i] + " ");
+                }
+                System.out.println();
+                System.out.println("Minimum in sub Array is: " + min);
+            }
+        }
+    }
 }
