@@ -55,11 +55,13 @@ public class RotateClockwiseTwoDArray
 
     public static void reverseTransposeArray(int[][]arr)
     {
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) 
+        {
             int start = 0;
             int end = arr[0].length - 1;
     
-            while (start < end) {
+            while (start < end) 
+            {
                 int temp = arr[i][start];
                 arr[i][start] = arr[i][end];
                 arr[i][end] = temp;
