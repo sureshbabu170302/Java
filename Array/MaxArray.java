@@ -4,7 +4,7 @@ public class MaxArray
 {
     public static void main(String[] args) 
     {
-        Scanner sc= = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.print("Enter the number of elements you want in your array: ");
         int size = sc.nextInt();
         int [] arr = new int[size];
