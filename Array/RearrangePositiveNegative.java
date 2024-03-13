@@ -1,28 +1,32 @@
-import java.util.Arrays;
+import java.util.*;
 
 public class RearrangePositiveNegative {
     public static void main(String[] args) {
-        int[] array = {5, 0, 3, 8, 0, 9, 2, 0, 1};
-        
-        // Call the method to sort and move zeros
-        sortAndMoveZeros(array);
-        
-        // Print the result
-        System.out.println(Arrays.toString(array));
+       int [] arr = {3, 1, -2, -5, 2, -4};
+       rearrangePositiveNegative(arr);
     }
 
-    private static void sortAndMoveZeros(int[] arr) {
-        Arrays.sort(arr); // Sort the array
-        
-        // Move zeros to the end
-        int nonZeroIndex = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] != 0) {
-                int temp = arr[i];
-                arr[i] = arr[nonZeroIndex];
-                arr[nonZeroIndex] = temp;
-                nonZeroIndex++;
+    public static void rearrangePositiveNegative(int [] arr)
+    {
+        int [] positive = new int[arr.length/2];
+        int [] negative = new int[arr.length/2];
+        int positiveIndex = 0;
+        int negativeIndex = 0;
+
+        for(int i=0; i<arr.length; i++)
+        {
+            if (arr[i]>0) {
+                positive[positiveIndex++] = arr[i];
+            }
+            else{
+                negative[negativeIndex++] = arr[i];
             }
         }
+        for(int i=0; i<arr.length/2; i+=1) {
+            arr[2*i]=positive[i];
+            arr[2*i+1]=negative[i];
+        }
+
+        System.out.println(Arrays.toString(arr));
     }
 }
