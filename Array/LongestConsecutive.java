@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class LongestConsecutive {
     public static void main(String[] args) {
-        int[] array = new int[]{10, 9, 8, 7, 6, 5, 4,  3, 2, 1, 100, 99};
+        int[] array = new int[]{100, 200, 1, 2, 3, 4};
         int n = array.length;
         int ans = findLongestConsecutive(array, n);
         System.out.println("Longest consecutive is: "+ans); 
@@ -10,7 +10,7 @@ public class LongestConsecutive {
 
     public static  int findLongestConsecutive(int[]arr, int n) {
         Arrays.sort(arr);
-        //1, 2, 3, 4, 5, 6, 7, 8, 9, 99, 100 
+        //1, 2, 3, 4, 100, 200 
         int lastSmaller = Integer.MIN_VALUE;
         int count = 0;
         int longest = 1;
@@ -24,7 +24,7 @@ public class LongestConsecutive {
                 count = 1;
                 lastSmaller = arr[i];
             }
-            longest = Math.max(lastSmaller, count);
+            longest = Math.max(longest, count);
         }
         return longest;
     }
