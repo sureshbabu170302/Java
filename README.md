@@ -18,15 +18,6 @@ arrays: This directory contains Java files related to array problems.
 strings: This directory contains Java files related to string problems.
 You can create additional folders within arrays and strings to categorize problems based on their themes or difficulty levels.
 
-/Java-Coding-Challenges
-|-- arrays
-|   |-- problem1.java
-|   |-- problem2.java
-|   |-- ...
-|-- strings
-|   |-- problemA.java
-|   |-- problemB.java
-|   |-- ...
 
 Solving Problems:
 
