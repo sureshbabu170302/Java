@@ -8,7 +8,10 @@ public class Main{
         while (true) {
         System.out.println("Create Account: 1");
         System.out.println("View Account Details: 2");
-        System.out.println("Delete Account: 3");
+        System.out.println("Deposit amount to your Account: 3");
+        System.out.println("Withdraw amount from your Account: 4");
+        System.out.println("Delete Account: 5");
+        System.out.println("Exit System: 6");
         System.out.println();
         System.out.print("Enter your choice: ");
         int choice = sc.nextInt();
@@ -35,13 +38,43 @@ public class Main{
 
                 if (viewAcc != null) {
                     viewAcc.displayAccountDetails(viewAccNo);
-                } else{
+                } else {
                     System.out.println("Account Not found!");
                 }
                 System.out.println();
                 break;
             
             case 3:
+                System.out.println("Deposit money into an existing account: ");
+                System.out.print("Enter Account Number : ");
+                int depAccNo = sc.nextInt();
+                Encapsulation searchAccount = searchAccount(arr, depAccNo);
+                if (searchAccount != null) {
+                    searchAccount.displayAccountDetails(depAccNo);
+                    System.out.println();
+                    System.out.print("Enter the amount to be deposited: ");
+                    int depositAmount = sc.nextInt();
+                    searchAccount.amountDeposit(depositAmount);
+                    searchAccount.getBalance();
+                }
+                break;
+
+            case 4:
+                System.out.println("Deposit money into an existing account: ");
+                System.out.print("Enter Account Number : ");
+                int withdrawAccNo = sc.nextInt();
+                Encapsulation searchwithDrawAccount = searchAccount(arr, withdrawAccNo);
+                if (searchwithDrawAccount != null) {
+                    searchwithDrawAccount.displayAccountDetails(withdrawAccNo);
+                    System.out.println();
+                    System.out.print("Enter the amount to be withdrawed: ");
+                    int depositAmount = sc.nextInt();
+                    searchwithDrawAccount.amountWithdrawal(withdrawAccNo);
+                    searchwithDrawAccount.getBalance();
+                }
+                break;
+
+            case 6:
                 System.out.println("Exiting System, Bye...");
                 sc.close();
                 System.exit(0);
