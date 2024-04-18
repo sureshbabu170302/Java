@@ -75,7 +75,7 @@ public class Main {
                         System.out.println();
                         System.out.print("Enter the amount to be withdrawed: ");
                         int depositAmount = sc.nextInt();
-                        searchwithDrawAccount.amountWithdrawal(withdrawAccNo);
+                        searchwithDrawAccount.amountWithdrawal(depositAmount);
                         System.out.println("Amount withdrawed successfully ! ");
                         searchwithDrawAccount.displayAccountDetails(withdrawAccNo);
                     }

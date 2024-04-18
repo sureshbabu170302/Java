@@ -26,7 +26,7 @@ public class Encapsulation {
     public void amountDeposit(double depositAmount){
         if(depositAmount > 0){
             this.balance += depositAmount;
-        } else{
+        }else{
             System.out.println("Invalid deposit amount");
         }
     }
