@@ -12,7 +12,8 @@ public class MainApp {
             System.out.println("Choose an option:");
             System.out.println("1. Book a Taxi");
             System.out.println("2. View Taxi Details");
-            System.out.println("3. Exit");
+            System.out.println("3. View Your Taxi Bookings");
+            System.out.println("4. Exit");
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -38,8 +39,15 @@ public class MainApp {
                     break;
 
                 case 3:
+                    System.out.println("Enter your name to view bookings:");
+                    String customerNameToViewBookings = scanner.nextLine();
+                    bookingSystem.viewCustomerBookings(customerNameToViewBookings);
+                    break;
+
+                case 4:
                     System.out.println("Exiting Taxi Booking System. Goodbye!");
                     System.exit(0);
+                    break;
 
                 default:
                     System.out.println("Invalid choice. Please try again.");

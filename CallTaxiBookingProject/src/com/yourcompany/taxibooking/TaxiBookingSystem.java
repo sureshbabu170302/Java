@@ -2,9 +2,11 @@ package com.yourcompany.taxibooking;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TaxiBookingSystem {
     private List<Taxi> taxis;
+    private List<Booking> bookings;
 
     public TaxiBookingSystem() {
         taxis = new ArrayList<>();
@@ -12,12 +14,19 @@ public class TaxiBookingSystem {
         taxis.add(new Taxi(2, "Emma"));
         taxis.add(new Taxi(3, "Mike"));
         taxis.add(new Taxi(4, "Sophia"));
+
+        bookings = new ArrayList<>(); // Initialize list of bookings
     }
 
     public void bookTaxi(String customerName, Point pickupLocation, Point dropLocation) {
         // Find the first available taxi
         Taxi availableTaxi = findAvailableTaxi();
         if (availableTaxi != null) {
+            // Create a new booking
+            Booking booking = new Booking(customerName, availableTaxi, pickupLocation, dropLocation);
+            bookings.add(booking); // Add the booking to the list of bookings
+
+            // Update taxi details
             System.out.println("Booking successful!");
             System.out.println("Assigned Taxi - Driver Name: " + availableTaxi.getDriverName());
             System.out.println("Pickup Location: " + pickupLocation.getName());
@@ -46,12 +55,25 @@ public class TaxiBookingSystem {
         }
     }
 
-    private Taxi findAvailableTaxi() {
-        for (Taxi taxi : taxis) {
-            if (taxi.isAvailable()) {
-                return taxi;
+    public void viewCustomerBookings(String customerName) {
+        System.out.println("Taxi bookings for " + customerName + ":");
+        List<Booking> customerBookings = bookings.stream()
+                .filter(booking -> booking.getCustomerName().equalsIgnoreCase(customerName))
+                .collect(Collectors.toList());
+
+        if (customerBookings.isEmpty()) {
+            System.out.println("No bookings found for " + customerName);
+        } else {
+            for (Booking booking : customerBookings) {
+                System.out.println("Driver Name: " + booking.getTaxi().getDriverName());
+                System.out.println("Pickup Location: " + booking.getPickupLocation().getName());
+                System.out.println("Drop-off Location: " + booking.getDropLocation().getName());
+                System.out.println(); // Print a blank line for readability
             }
         }
-        return null;
+    }
+
+    private Taxi findAvailableTaxi() {
+        return taxis.stream().filter(Taxi::isAvailable).findFirst().orElse(null);
     }
 }
